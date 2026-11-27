@@ -17,7 +17,13 @@
 
   // Fungsi tulis yang dah disambung ke Supabase. Nama app -> nama RPC. (Fasa 2 akan isi senarai ini.)
   var TULIS = {
-    // contoh: kemaskiniYuran: 'kemaskini_yuran'
+    // Fasa 2a: Kutipan yuran
+    kemaskiniYuran: 'kemaskini_yuran',
+    tukarTarikhBayar: 'tukar_tarikh_bayar',
+    terimaTajaan: 'terima_tajaan',
+    batalTajaan: 'batal_tajaan',
+    bayarPendaftaran: 'bayar_pendaftaran',
+    batalPendaftaran: 'batal_pendaftaran'
   };
   // Fungsi yang ambil argumen berasingan (bukan satu JSON)
   var ARG = {
@@ -45,7 +51,7 @@
 
   function barBeta(d) {
     var bar = document.getElementById('betaBar');
-    var teks = C.mod === 'BETA' ? 'BETA · data salinan dari Sheet' + (d && d.importTerakhir ? ' (import ' + esc(d.importTerakhir.replace('T', ' ')) + ')' : '') + ' · simpan belum disambung, guna CRM lama untuk ubah data' : '';
+    var teks = C.mod === 'BETA' ? 'BETA · data salinan dari Sheet' + (d && d.importTerakhir ? ' (import ' + esc(d.importTerakhir.replace('T', ' ')) + ')' : '') + ' · ujian: Kutipan yuran boleh disimpan, tapi akan diganti semula bila import dijalankan. Modul lain belum disambung' : '';
     bar.innerHTML = (teks ? '<span>' + teks + '</span>' : '') + '<span>' + esc(d && d.user ? d.user.emel : '') + '</span><button type="button" id="btnKeluar">Log keluar</button>';
     bar.hidden = false;
     document.getElementById('btnKeluar').onclick = function () { sb.auth.signOut().then(function () { location.reload(); }); };
