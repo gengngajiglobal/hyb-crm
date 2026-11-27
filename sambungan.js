@@ -40,7 +40,10 @@
     sahkanDaftar: 'sahkan_daftar',
     tolakDaftar: 'tolak_daftar',
     simpanLokasi: 'simpan_lokasi',
-    buangLokasi: 'buang_lokasi'
+    buangLokasi: 'buang_lokasi',
+    // Fasa 3: link laporan guru (app guru.html)
+    janaLinkGuru: 'jana_link_guru',
+    batalLinkGuru: 'batal_link_guru'
   };
   // Fungsi yang ambil argumen berasingan (bukan satu JSON)
   var ARG = {
@@ -68,7 +71,7 @@
 
   function barBeta(d) {
     var bar = document.getElementById('betaBar');
-    var teks = C.mod === 'BETA' ? 'BETA · data salinan dari Sheet' + (d && d.importTerakhir ? ' (import ' + esc(d.importTerakhir.replace('T', ' ')) + ')' : '') + ' · ujian: perubahan boleh disimpan tapi diganti semula bila import dijalankan. link guru & carian Google belum disambung' : '';
+    var teks = C.mod === 'BETA' ? 'BETA · data salinan dari Sheet' + (d && d.importTerakhir ? ' (import ' + esc(d.importTerakhir.replace('T', ' ')) + ')' : '') + ' · ujian: perubahan boleh disimpan tapi diganti semula bila import dijalankan. Carian Google di peta belum ada' : '';
     bar.innerHTML = (teks ? '<span>' + teks + '</span>' : '') + '<span>' + esc(d && d.user ? d.user.emel : '') + '</span><button type="button" id="btnKeluar">Log keluar</button>';
     bar.hidden = false;
     document.getElementById('btnKeluar').onclick = function () { sb.auth.signOut().then(function () { location.reload(); }); };
@@ -95,7 +98,6 @@
         });
       }
       var rpc = TULIS[nama];
-      if (nama === 'janaLinkGuru' || nama === 'batalLinkGuru') throw new Error('Versi BETA: link laporan guru masih guna CRM lama sampai App Laporan Guru dipindah ke database baru.');
       if (nama === 'cariGoogle' || nama === 'bukaPautanGoogle') throw new Error('Carian Google belum ada dalam versi baru. Pin lokasi terus di peta buat masa ini.');
       if (!rpc) throw new Error('Versi BETA: fungsi ini belum disambung ke database baru. Guna CRM lama untuk ubah data buat masa ini.');
       var p;
