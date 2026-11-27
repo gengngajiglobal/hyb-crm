@@ -1,0 +1,15 @@
+.beta-bar{position:sticky;top:0;z-index:60;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;
+  padding:6px 16px;background:#E9508A;color:#fff;font:600 13px/1.4 Inter,system-ui,sans-serif;text-align:center}
+.beta-bar button{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.5);border-radius:999px;
+  padding:3px 12px;font:inherit;cursor:pointer}
+.login-kad{max-width:420px;margin:12vh auto;padding:32px 28px;background:#fff;border:1px solid #e5e7eb;border-radius:16px;text-align:center;
+  box-shadow:0 10px 30px rgba(31,55,122,.08)}
+.login-kad h2{font-family:Nunito,sans-serif;color:#1F377A;margin:8px 0 6px}
+.login-kad p{color:#4b5563;font-size:14px;margin:0 0 20px}
+.login-kad img{width:160px;height:auto}
+.btn-google{display:inline-flex;gap:10px;align-items:center;padding:10px 18px;border-radius:10px;border:1px solid #d1d5db;background:#fff;
+  font:600 15px Inter,system-ui,sans-serif;color:#111827;cursor:pointer}
+.btn-google:hover{background:#f9fafb}
+.login-kad .kecil{font-size:12px;color:#6b7280;margin-top:18px}
+.login-kad .salah{color:#b91c1c;font-size:13px;margin-top:14px}
+.beta-bar[hidden]{display:none}
