@@ -25,7 +25,7 @@ jobs:
           P="$(printf '%s' "$P" | tr -d '\r\n')"
           R="$(printf '%s' "$R" | tr -d '[:space:]')"
           R="${R#https://}"; R="${R%%.supabase.co*}"
-          echo "Token: ${#T} aksara, bermula '${T:0:4}'"
+          echo "Token: ${#T} aksara, bermula '${T:0:7}'"
           echo "Project ref: ${#R} aksara"
           echo "Password: ${#P} aksara"
           [ -n "$T" ] || { echo "::error::SUPABASE_ACCESS_TOKEN kosong atau tiada dalam Repository secrets (bahagian Actions)."; exit 1; }
@@ -38,6 +38,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: supabase/setup-cli@v1
         with:
-          version: 2.33.9
+          version: latest   # token jenis baru (sbp_v0_...) perlu CLI terkini
       - run: supabase link --project-ref "$PROJECT_REF"
       - run: supabase db push --include-all
