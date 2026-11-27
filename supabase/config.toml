@@ -1,0 +1,2 @@
+# Konfigurasi minimum untuk Supabase CLI (digunakan oleh GitHub Action migrasi).
+project_id = "hyb-crm"
