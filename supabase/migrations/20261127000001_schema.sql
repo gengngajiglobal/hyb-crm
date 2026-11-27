@@ -275,4 +275,4 @@ grant execute on function pengguna_semasa() to authenticated;
 
 -- Isi awal
 insert into tetapan (id) values (1);
-insert into akses_crm (emel, nama, peranan) values ('muhdkhalaf@gengngajiglobal.com', 'Manager', 'Manager');
+-- Manager pertama dimasukkan oleh skrip import (Script Property EMEL_MANAGER), bukan dalam repo awam.

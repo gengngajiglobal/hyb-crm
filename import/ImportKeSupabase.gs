@@ -10,19 +10,22 @@
  *  2. Tampal fail ini sebagai Code.gs. Simpan.
  *  3. Project Settings (ikon gear) > Script Properties > Add:
  *       SUPABASE_URL          = https://xxxx.supabase.co
- *       SUPABASE_SERVICE_KEY  = (service_role key dari Supabase > Project Settings > API Keys)
+ *       SUPABASE_SERVICE_KEY  = (service_role / secret key dari Supabase > Project Settings > API Keys)
+ *       SHEET_ID              = ID Sheet "CRM HYB 2026" (bahagian panjang dalam URL Sheet)
+ *       EMEL_MANAGER          = emel Google Manager (dapat peranan Manager dalam CRM baru)
  *     Kunci service_role JANGAN dikongsi dalam chat atau ditampal dalam kod.
  *  4. Pilih function importSekarang > Run. Benarkan akses (baca Sheet + sambung ke luar).
  *  5. (Pilihan) Triggers > Add Trigger > importSekarang, Time-driven, Hour timer, Every hour.
  */
 
-const SHEET_ID = '1VkqMOdDsDR-IFERdEundLotKxlbPbX-QCsCb20zQQBg';
 const TZ = 'Asia/Kuala_Lumpur';
 
 function importSekarang() {
-  const ss = SpreadsheetApp.openById(SHEET_ID);
-  const d = bina_(ss);
   const props = PropertiesService.getScriptProperties();
+  const ss = SpreadsheetApp.openById(props.getProperty('SHEET_ID'));
+  const d = bina_(ss);
+  const mgr = String(props.getProperty('EMEL_MANAGER') || '').trim().toLowerCase();
+  if (mgr) d.akses.unshift({ emel: mgr, nama: 'Manager', peranan: 'Manager', aktif: true, catatan: 'Pemilik' });
   const url = String(props.getProperty('SUPABASE_URL') || '').replace(/\/+$/, '');
   const key = props.getProperty('SUPABASE_SERVICE_KEY');
   if (!/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(url) || !key) {
