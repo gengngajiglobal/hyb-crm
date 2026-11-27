@@ -40,4 +40,4 @@ jobs:
         with:
           version: latest   # token jenis baru (sbp_v0_...) perlu CLI terkini
       - run: supabase link --project-ref "$PROJECT_REF"
-      - run: supabase db push --linked --include-all
+      - run: supabase db push --remote --include-all
