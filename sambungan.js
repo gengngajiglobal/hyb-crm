@@ -23,7 +23,13 @@
     terimaTajaan: 'terima_tajaan',
     batalTajaan: 'batal_tajaan',
     bayarPendaftaran: 'bayar_pendaftaran',
-    batalPendaftaran: 'batal_pendaftaran'
+    batalPendaftaran: 'batal_pendaftaran',
+    // Fasa 2b: Pelajar, Tempat/Pipeline, Laporan kelas, Log
+    simpanTempat: 'simpan_tempat',
+    tukarStatusTempat: 'tukar_status_tempat',
+    simpanPelajar: 'simpan_pelajar',
+    simpanLaporan: 'simpan_laporan',
+    tambahLog: 'tambah_log'
   };
   // Fungsi yang ambil argumen berasingan (bukan satu JSON)
   var ARG = {
@@ -51,7 +57,7 @@
 
   function barBeta(d) {
     var bar = document.getElementById('betaBar');
-    var teks = C.mod === 'BETA' ? 'BETA · data salinan dari Sheet' + (d && d.importTerakhir ? ' (import ' + esc(d.importTerakhir.replace('T', ' ')) + ')' : '') + ' · ujian: Kutipan yuran boleh disimpan, tapi akan diganti semula bila import dijalankan. Modul lain belum disambung' : '';
+    var teks = C.mod === 'BETA' ? 'BETA · data salinan dari Sheet' + (d && d.importTerakhir ? ' (import ' + esc(d.importTerakhir.replace('T', ' ')) + ')' : '') + ' · ujian: Kutipan, Pelajar, Tempat, Laporan & Log boleh disimpan, tapi diganti semula bila import dijalankan. Modul lain belum disambung' : '';
     bar.innerHTML = (teks ? '<span>' + teks + '</span>' : '') + '<span>' + esc(d && d.user ? d.user.emel : '') + '</span><button type="button" id="btnKeluar">Log keluar</button>';
     bar.hidden = false;
     document.getElementById('btnKeluar').onclick = function () { sb.auth.signOut().then(function () { location.reload(); }); };
