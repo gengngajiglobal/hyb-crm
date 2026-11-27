@@ -29,7 +29,13 @@
     tukarStatusTempat: 'tukar_status_tempat',
     simpanPelajar: 'simpan_pelajar',
     simpanLaporan: 'simpan_laporan',
-    tambahLog: 'tambah_log'
+    tambahLog: 'tambah_log',
+    // Fasa 2c: Guru, Penaja, Bayaran Masjid (link laporan guru tunggu Fasa 3)
+    simpanGuru: 'simpan_guru',
+    tukarStatusGuru: 'tukar_status_guru',
+    simpanPenaja: 'simpan_penaja',
+    simpanSewaTetapan: 'simpan_sewa_tetapan',
+    rekodSewa: 'rekod_sewa'
   };
   // Fungsi yang ambil argumen berasingan (bukan satu JSON)
   var ARG = {
@@ -57,7 +63,7 @@
 
   function barBeta(d) {
     var bar = document.getElementById('betaBar');
-    var teks = C.mod === 'BETA' ? 'BETA · data salinan dari Sheet' + (d && d.importTerakhir ? ' (import ' + esc(d.importTerakhir.replace('T', ' ')) + ')' : '') + ' · ujian: Kutipan, Pelajar, Tempat, Laporan & Log boleh disimpan, tapi diganti semula bila import dijalankan. Modul lain belum disambung' : '';
+    var teks = C.mod === 'BETA' ? 'BETA · data salinan dari Sheet' + (d && d.importTerakhir ? ' (import ' + esc(d.importTerakhir.replace('T', ' ')) + ')' : '') + ' · ujian: perubahan boleh disimpan tapi diganti semula bila import dijalankan. Pendaftaran, peta & link guru belum disambung' : '';
     bar.innerHTML = (teks ? '<span>' + teks + '</span>' : '') + '<span>' + esc(d && d.user ? d.user.emel : '') + '</span><button type="button" id="btnKeluar">Log keluar</button>';
     bar.hidden = false;
     document.getElementById('btnKeluar').onclick = function () { sb.auth.signOut().then(function () { location.reload(); }); };
@@ -84,6 +90,7 @@
         });
       }
       var rpc = TULIS[nama];
+      if (nama === 'janaLinkGuru' || nama === 'batalLinkGuru') throw new Error('Versi BETA: link laporan guru masih guna CRM lama sampai App Laporan Guru dipindah ke database baru.');
       if (!rpc) throw new Error('Versi BETA: fungsi ini belum disambung ke database baru. Guna CRM lama untuk ubah data buat masa ini.');
       var p;
       if (ARG[nama]) { p = {}; ARG[nama].forEach(function (k, i) { p[k] = args[i]; }); }
