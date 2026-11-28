@@ -84,6 +84,16 @@
     return new Error(m);
   }
 
+  // Carian Google peta: melalui web app Apps Script (servis Maps percuma), token login disemak di sana.
+  function petaGoogle(nama, args, token) {
+    if (!C.petaGoogleUrl) return Promise.reject(new Error('Carian Google belum disediakan. Pin lokasi terus di peta buat masa ini.'));
+    var a = JSON.parse(args[0] || '{}');
+    var badan = { token: token, jenis: nama === 'cariGoogle' ? 'cari' : 'pautan', q: a.q, url: a.url };
+    return fetch(C.petaGoogleUrl, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(badan) })
+      .then(function (res) { if (!res.ok) throw new Error('Carian Google gagal (' + res.status + ').'); return res.json(); })
+      .then(function (o) { if (!o.ok) throw new Error(o.ralat || 'Carian Google gagal.'); return JSON.stringify(o); });
+  }
+
   function panggil(nama, args) {
     return sb.auth.getSession().then(function (r) {
       if (!r.data.session) { paparLogin(); return new Promise(function () {}); } // tunggu login
@@ -98,7 +108,7 @@
         });
       }
       var rpc = TULIS[nama];
-      if (nama === 'cariGoogle' || nama === 'bukaPautanGoogle') throw new Error('Carian Google belum ada dalam versi baru. Pin lokasi terus di peta buat masa ini.');
+      if (nama === 'cariGoogle' || nama === 'bukaPautanGoogle') return petaGoogle(nama, args, r.data.session.access_token);
       if (!rpc) throw new Error('Fungsi ini belum ada dalam versi baru. Maklumkan kepada Manager.');
       var p;
       if (ARG[nama]) { p = {}; ARG[nama].forEach(function (k, i) { p[k] = args[i]; }); }

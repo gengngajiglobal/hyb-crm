@@ -4,5 +4,6 @@
 window.HYB_CONFIG = {
   supabaseUrl: 'https://upslgwnkqwuswlcnrdot.supabase.co',
   supabaseAnonKey: 'sb_publishable_DBNA1FcAj-xgVk8sblFteg_Svpt9F6e',
+  petaGoogleUrl: '',   // URL /exec web app PetaGoogle.gs (Apps Script); kosong = carian Google dimatikan
   mod: 'LIVE'   // 'BETA' = ujian (data salinan Sheet); 'LIVE' = versi sebenar selepas cutover 28/11/2026
 };
