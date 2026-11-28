@@ -17,9 +17,9 @@ Migration hanya tambah atau ubah. Ia tidak padam data melainkan Ka arahkan.
 Yuran tempat, sewa masjid, penaja, akses staf dan lain-lain diubah terus dalam CRM. Tak perlu code.
 
 ## Tambah staf baru
-Tambah emel staf dalam senarai akses CRM (peranan Manager / Ketua / Staf / Lihat). Semasa BETA, senarai ini disalin dari
-tab "Akses CRM" dalam Sheet. Skrin urus akses dalam CRM akan ditambah dalam Fasa 2. Staf log masuk dengan butang Google
-menggunakan emel itu. Tak perlu share Sheet lagi.
+Buat masa ini: Supabase > Table Editor > akses_crm > Insert row. Isi emel (huruf kecil), nama, peranan
+(Manager / Ketua / Staf / Lihat), aktif = true. Untuk buang akses, tukar aktif = false. Staf log masuk dengan butang
+Google menggunakan emel itu. Tak perlu share Sheet lagi. (Skrin urus akses dalam CRM akan ditambah.)
 
 ## Perkara yang JANGAN dibuat
 - Jangan tampal service_role key Supabase dalam mana-mana fail repo atau chat.
