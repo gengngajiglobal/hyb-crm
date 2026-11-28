@@ -4,5 +4,5 @@
 window.HYB_CONFIG = {
   supabaseUrl: 'https://upslgwnkqwuswlcnrdot.supabase.co',
   supabaseAnonKey: 'sb_publishable_DBNA1FcAj-xgVk8sblFteg_Svpt9F6e',
-  mod: 'BETA'   // 'BETA' = data salinan dari Sheet, simpan belum disambung
+  mod: 'LIVE'   // 'BETA' = ujian (data salinan Sheet); 'LIVE' = versi sebenar selepas cutover 28/11/2026
 };

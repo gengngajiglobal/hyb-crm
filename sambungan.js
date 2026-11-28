@@ -99,7 +99,7 @@
       }
       var rpc = TULIS[nama];
       if (nama === 'cariGoogle' || nama === 'bukaPautanGoogle') throw new Error('Carian Google belum ada dalam versi baru. Pin lokasi terus di peta buat masa ini.');
-      if (!rpc) throw new Error('Versi BETA: fungsi ini belum disambung ke database baru. Guna CRM lama untuk ubah data buat masa ini.');
+      if (!rpc) throw new Error('Fungsi ini belum ada dalam versi baru. Maklumkan kepada Manager.');
       var p;
       if (ARG[nama]) { p = {}; ARG[nama].forEach(function (k, i) { p[k] = args[i]; }); }
       else p = JSON.parse(args[0] || '{}');
